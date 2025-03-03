@@ -31,7 +31,7 @@ namespace Lezione9.Dev.Controllers
         }
 
         [HttpGet]
-        [Route("Previsioni/{id}")]
+        [Route("{id}/Previsioni")]
         public IActionResult GetSingleFav(int id)
         {
             var search = _ctx.Users.Include(w => w.Favcities).ThenInclude(a => a.City).ThenInclude(c => c.Previsioni).ThenInclude(c => c.Giorno).SingleOrDefault(w => w.Id == id);
@@ -60,7 +60,7 @@ namespace Lezione9.Dev.Controllers
 
         }
         [HttpGet]
-        [Route("Cities/{id}")]
+        [Route("{id}/Cities")]
         public IActionResult GetWithCity(int id)
         {
             var result = _ctx.Users.Include(w => w.Favcities).ThenInclude(a => a.City).SingleOrDefault(w => w.Id == id);
